@@ -1,2 +1,9 @@
-package battleship;public class Destroyer {
+package battleship;
+
+class Destroyer extends Ship {
+
+    public Destroyer() {
+        super(2);
+    }
+
 }

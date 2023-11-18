@@ -1,2 +1,174 @@
-package battleship;public class Ship {
+package battleship;
+
+public abstract class Ship {
+
+    //The row that contains the bow (front part of the ship
+    private int bowRow;
+
+    //The column that contains the bow (front part of the ship)
+    private int bowColumn;
+
+    //The length of the ship
+    private int length;
+
+    //A boolean that represents whether the ship is going to be placed horizontally or vertically
+    private boolean horizontal;
+
+    //An array of booleans that indicate whether that part of the ship has been hit or not
+    private boolean [] hit;
+
+    public Ship(int length){
+        //set the length of the ship
+        this.length = length;
+        //initial the hit array according to length
+        this.hit = new boolean[length];
+        for (int i = 0; i<length; i++){
+            this.hit[i] = false;
+        }
+    }
+
+    //Returns the ship length
+    public int getLength(){
+        return this.length;
+    }
+
+    //Returns the row corresponding to the position of the bow
+    public int getBowRow(){
+        return this.bowRow;
+    }
+
+    //Returns the bow column location
+    public int getBowColumn(){
+        return this.bowColumn;
+    }
+
+    //Returns the hit array
+    public boolean[] getHit(){
+        return this.hit; 
+    }
+
+    //Returns whether the ship is horizontal or not
+    public boolean isHorizontal(){
+        return this.horizontal;
+    }
+
+    //Sets the value of bowRow
+    public void setBowRow(int row){
+        this.bowRow = row;
+    }
+
+    //Sets the value of bowColumn
+    public void setBowColumn(int column){
+        this.bowColumn = column;  
+    }
+
+    //Sets the value of the instance variable horizonta
+    public void setHorizontal(boolean horizontal){
+        this.horizontal = horizontal;
+    }
+
+    //Returns the type of ship as a String. Every specific type of Ship
+    public abstract String getShipType();
+    
+    //Based on the given row, column, and orientation, returns true 
+    //if it is okay to put a ship of this length with its bow in this location; false otherwise.
+    boolean okToPlaceShipAt(int row, int column, boolean horizontal,Ocean ocean){
+        boolean okToPlaceShip = true;
+        int row_start, row_end, column_start, column_end ,row_length, column_length;
+        int row_add = 1, row_sub = 1, column_add = 1, column_sub = 1;
+        if (horizontal){
+            row_length = this.length;
+            column_length = 0;
+        }else{
+            row_length = 0;
+            column_length = this.length;
+        }
+
+        if (row>9||((row - row_length)<0)||column>9||((column-column_length)<0)){
+            okToPlaceShip = false;
+            return okToPlaceShip;
+        }
+
+        if (row == 9){
+            row_add = 0;
+        }
+        if ((row-row_length)==0){
+            row_sub = 0;
+        }
+        if (column == 9){
+            column_add = 0;
+        }
+        if ((column - column_length)==0){
+            column_sub = 0;
+        }
+        
+        row_end = row + row_add;
+        row_start =  row - row_length - row_sub;
+        column_end = column + column_add;
+        column_start = column - column_length - column_sub;
+
+        for (int column_index = column_start ; column_index< column_end + 1 ; column_index++){
+            for (int row_index = row_start ; row_index < row_end + 1 ; row_index ++ ){
+                if( ocean.isOccupied(row_index, column_index)){
+                    okToPlaceShip = false;
+                }
+            }
+        }
+
+        return okToPlaceShip;
+    }
+
+    //“Puts” the ship in the ocean
+    void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
+        int row_start, row_end, column_start, column_end ,row_length, column_length;
+        if (horizontal){
+            row_length = this.length;
+            column_length = 0;
+        }else{
+            row_length = 0;
+            column_length = this.length;
+        }
+
+        row_end = row;
+        row_start =  row - row_length;
+        column_end = column;
+        column_start = column - column_length;
+
+        for (int column_index = column_start ; column_index< column_end + 1 ; column_index++){
+            for (int row_index = row_start ; row_index < row_end + 1 ; row_index ++ ){
+               ocean.getShipArray()[row_index][column_index] = this; 
+            }
+        }
+    }
+
+    //If a part of the ship occupies the given row and column, and the ship hasn’t been
+    //sunk, mark that part of the ship as “hit” (in the hit array, index 0 indicates the
+    //bow) and return true; otherwise return false
+    boolean shootAt(int row, int column){
+        boolean shootat = false;
+        if (this.isSunk()){
+            if (this.horizontal){
+                if (this.bowRow == row && (column<=this.bowColumn && column>=this.bowColumn-this.length)){
+                    shootat = true;
+                }
+            }else{
+                if (this.bowColumn == column && (row<=this.bowRow && row>=this.bowRow-this.length)){
+                    shootat = true;
+                }
+            }
+        }
+        return shootat;
+    }
+
+    //Return true if every part of the ship has been hit, false otherwise
+    boolean isSunk(){
+        boolean issunk = true;
+        for (int i = 0; i < this.length ; i++){
+            if (!this.hit[i]){
+                issunk = false;
+            }
+        }
+        return issunk;
+    }
+
 }
