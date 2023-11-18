@@ -42,10 +42,26 @@ public class Ocean {
      */
 
     public Ocean(){
-        this.ships = new EmptySea[10][10];
+        //initialize the ships array
+        this.initializeShipsArray();
+
+        //initialize the shotsFired, hitCount and shipsSunk
         this.shotsFired = 0;
         this.hitCount = 0;
         this.shipsSunk = 0;
+    }
+
+    /**
+     * A private helper method to initialize the ships array
+     */
+
+    private void initializeShipsArray(){
+        //initialize the ships array
+        for (int i = 0; i < 9; i++){
+            for (int j = 0 ; j < 9; j++){
+                this.ships[i][j] = new EmptySea();
+            }
+        }
     }
 
     //methods

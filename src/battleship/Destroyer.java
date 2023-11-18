@@ -15,6 +15,12 @@ class Destroyer extends Ship {
 
     private static final int length = 2;
 
+    /**
+     * The name of the destroyer
+     */
+
+    private static final String shipName = "destroyer";
+
     //constructor
 
     /**
@@ -33,7 +39,7 @@ class Destroyer extends Ship {
 
     @Override
     public String getShipType() {
-        return "destroyer";
+        return shipName;
     }
 
 }

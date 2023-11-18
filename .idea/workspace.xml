@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5af9b77e-1147-4707-a7d5-3e5d3427d703" name="Changes" comment="" />
+    <list default="true" id="5af9b77e-1147-4707-a7d5-3e5d3427d703" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/battleship/Ocean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/battleship/Ocean.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +55,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.ShipTest.testGetBowRow">
+  <component name="RunManager" selected="JUnit.OceanTest.testEmptyOcean">
     <configuration name="OceanTest.testEmptyOcean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Battleship" />
       <extension name="coverage">
@@ -102,9 +105,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OceanTest.testEmptyOcean" />
         <item itemvalue="JUnit.ShipTest.testGetBowRow" />
         <item itemvalue="JUnit.ShipTest" />
-        <item itemvalue="JUnit.OceanTest.testEmptyOcean" />
       </list>
     </recent_temporary>
   </component>
@@ -119,7 +122,7 @@
       <workItem from="1699475741922" duration="2033000" />
       <workItem from="1700281736767" duration="71000" />
       <workItem from="1700281857935" duration="7952000" />
-      <workItem from="1700338031245" duration="379000" />
+      <workItem from="1700338031245" duration="1476000" />
     </task>
     <servers />
   </component>

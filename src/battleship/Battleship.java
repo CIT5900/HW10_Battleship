@@ -15,6 +15,12 @@ class Battleship extends Ship {
 
     private static final int length = 4;
 
+    /**
+     * The name of the battleship
+     */
+
+    private static final String shipName = "battleship";
+
     //constructor
 
     /**
@@ -33,6 +39,6 @@ class Battleship extends Ship {
 
     @Override
     public String getShipType() {
-        return "battleship";
+        return shipName;
     }
 }
