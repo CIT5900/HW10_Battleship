@@ -20,6 +20,6 @@ public class BattleshipGame {
         //print the number of shots fired
         System.out.println("The number of shots fired is: " + ocean.getShotsFired());
 
-        }
+
     }
 }
