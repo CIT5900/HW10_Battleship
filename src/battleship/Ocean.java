@@ -2,6 +2,11 @@ package battleship;
 
 import java.util.Objects;
 
+/**
+ * Represents the ocean in the game of Battleship
+ * @author Haoyuan Zhu
+ */
+
 public class Ocean {
 
     //instance variables
