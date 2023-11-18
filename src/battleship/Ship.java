@@ -145,54 +145,47 @@ public abstract class Ship {
 
     /**
      * Based on the given row, column, and orientation
-     * returns true if it is okay to put a ship of this length with its bow in this location
-     * false otherwise.
+     * Returns true if it is okay to put a ship of this length with its bow in this location; false otherwise.
      */
 
     boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
-        boolean okToPlaceShip = true;
-        int row_start, row_end, column_start, column_end ,row_length, column_length;
-        int row_add = 1, row_sub = 1, column_add = 1, column_sub = 1;
+        boolean oktoplace = true;
         if (horizontal){
-            row_length = this.length;
-            column_length = 0;
+            if (column - this.length < -1){
+                oktoplace = false;
+            }else{
+                for (int i = 0; i < this.length; i++){
+                    if (isAdjacentToBoat(row, column - i, ocean)){
+                        oktoplace = false;
+                    }
+                }
+            }
         }else{
-            row_length = 0;
-            column_length = this.length;
-        }
-
-        if (row>9||((row - row_length)<0)||column>9||((column-column_length)<0)){
-            okToPlaceShip = false;
-            return okToPlaceShip;
-        }
-
-        if (row == 9){
-            row_add = 0;
-        }
-        if ((row-row_length)==0){
-            row_sub = 0;
-        }
-        if (column == 9){
-            column_add = 0;
-        }
-        if ((column - column_length)==0){
-            column_sub = 0;
-        }
-        
-        row_end = row + row_add;
-        row_start =  row - row_length - row_sub;
-        column_end = column + column_add;
-        column_start = column - column_length - column_sub;
-
-        for (int column_index = column_start ; column_index< column_end + 1 ; column_index++){
-            for (int row_index = row_start ; row_index < row_end + 1 ; row_index ++ ){
-                if( ocean.isOccupied(row_index, column_index)){
-                    okToPlaceShip = false;
+            if (row - this.length < -1){
+                oktoplace = false;
+            }else{
+                for (int i = 0; i < this.length; i++){
+                    if (isAdjacentToBoat(row - i, column, ocean)){
+                        oktoplace = false;
+                    }
                 }
             }
         }
+        return oktoplace;
+    }
 
-        return okToPlaceShip;
+    boolean isAdjacentToBoat(int row, int column, Ocean ocean){
+        boolean adjacent = false;
+        for (int i = -1; i < 2 ; i++){
+            for (int j = -1; j < 2 ; j++){
+                if (row + i >= 0 && row + i < 10 && column + j >= 0 && column + j < 10) {
+                    if (ocean.isOccupied(row + i, column + j)) {
+                        adjacent = true;
+                    }
+                }
+            }
+        }
+        return adjacent;
     }
 
     /**
@@ -204,23 +197,16 @@ public abstract class Ship {
      */
 
     void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
-        int row_start, row_end, column_start, column_end ,row_length, column_length;
+        this.bowRow = row;
+        this.bowColumn = column;
+        this.horizontal = horizontal;
         if (horizontal){
-            row_length = this.length;
-            column_length = 0;
+            for (int i = 0; i < this.length ; i++){
+                ocean.getShipArray()[row][column-i] = this;
+            }
         }else{
-            row_length = 0;
-            column_length = this.length;
-        }
-
-        row_end = row;
-        row_start =  row - row_length;
-        column_end = column;
-        column_start = column - column_length;
-
-        for (int column_index = column_start ; column_index< column_end + 1 ; column_index++){
-            for (int row_index = row_start ; row_index < row_end + 1 ; row_index ++ ){
-               ocean.getShipArray()[row_index][column_index] = this; 
+            for (int i = 0; i < this.length ; i++){
+                ocean.getShipArray()[row-i][column] = this;
             }
         }
     }
@@ -271,9 +257,9 @@ public abstract class Ship {
     @Override
     public String toString(){
         if (this.isSunk()){
-            return "x";
+            return "s";
         }else{
-            return "S";
+            return "x";
         }
     }
 }

@@ -120,7 +120,7 @@ public class Ocean {
      */
 
     boolean isOccupied(int row, int column){
-        return !Objects.equals(ships[row][column].getShipType(), "-");
+        return !(Objects.equals(this.ships[row][column].getShipType(), "empty"));
     }
 
     /**

@@ -7,6 +7,7 @@
     <list default="true" id="5af9b77e-1147-4707-a7d5-3e5d3427d703" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/battleship/Ocean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/battleship/Ocean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/battleship/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/battleship/Ship.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +56,8 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.OceanTest.testEmptyOcean">
-    <configuration name="OceanTest.testEmptyOcean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ShipTest">
+    <configuration name="OceanTest.testIsOccupied" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Battleship" />
       <extension name="coverage">
         <pattern>
@@ -66,7 +67,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="battleship" />
       <option name="MAIN_CLASS_NAME" value="battleship.OceanTest" />
-      <option name="METHOD_NAME" value="testEmptyOcean" />
+      <option name="METHOD_NAME" value="testIsOccupied" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -87,7 +88,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShipTest.testGetBowRow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShipTest.testOkToPlaceShipAt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Battleship" />
       <extension name="coverage">
         <pattern>
@@ -97,7 +98,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="battleship" />
       <option name="MAIN_CLASS_NAME" value="battleship.ShipTest" />
-      <option name="METHOD_NAME" value="testGetBowRow" />
+      <option name="METHOD_NAME" value="testOkToPlaceShipAt" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShipTest.testOkToPlaceShipAtAgainstOtherShipsOneBattleship" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="battleship.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="battleship" />
+      <option name="MAIN_CLASS_NAME" value="battleship.ShipTest" />
+      <option name="METHOD_NAME" value="testOkToPlaceShipAtAgainstOtherShipsOneBattleship" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShipTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="battleship.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="battleship" />
+      <option name="MAIN_CLASS_NAME" value="battleship.ShipTest" />
+      <option name="METHOD_NAME" value="testToString" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -105,9 +138,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OceanTest.testEmptyOcean" />
-        <item itemvalue="JUnit.ShipTest.testGetBowRow" />
         <item itemvalue="JUnit.ShipTest" />
+        <item itemvalue="JUnit.ShipTest.testToString" />
+        <item itemvalue="JUnit.ShipTest.testOkToPlaceShipAtAgainstOtherShipsOneBattleship" />
+        <item itemvalue="JUnit.ShipTest.testOkToPlaceShipAt" />
+        <item itemvalue="JUnit.OceanTest.testIsOccupied" />
       </list>
     </recent_temporary>
   </component>
@@ -122,7 +157,7 @@
       <workItem from="1699475741922" duration="2033000" />
       <workItem from="1700281736767" duration="71000" />
       <workItem from="1700281857935" duration="7952000" />
-      <workItem from="1700338031245" duration="1476000" />
+      <workItem from="1700338031245" duration="6592000" />
     </task>
     <servers />
   </component>
