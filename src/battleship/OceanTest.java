@@ -3,6 +3,7 @@ package battleship;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,7 @@ class OceanTest {
 				assertEquals("empty", ship.getShipType());
 			}
 		}
-		
+
 		assertEquals(0, ships[0][0].getBowRow());
 		assertEquals(0, ships[0][0].getBowColumn());
 		
@@ -56,7 +57,7 @@ class OceanTest {
 
 		Ship[][] ships = ocean.getShipArray();
 		ArrayList<Ship> shipsFound = new ArrayList<Ship>();
-		
+
 		int numBattlehips = 0;
 		int numCruisers = 0;
 		int numDestroyers = 0;

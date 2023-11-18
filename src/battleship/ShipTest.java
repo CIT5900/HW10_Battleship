@@ -153,6 +153,7 @@ class ShipTest {
 		battleship1.placeShipAt(row, column, horizontal, ocean);
 
 		//test second ship
+		//horizontally adjacent
 		Battleship battleship2 = new Battleship();
 		row = 1;
 		column = 4;
@@ -161,7 +162,32 @@ class ShipTest {
 		assertFalse(ok2, "Not OK to place ship vertically adjacent below.");
 		
 		//TODO
-		//More tests
+		//test third ship
+		//diagonally adjacent
+		Battleship battleship3 = new Battleship();
+		row = 4;
+		column = 5;
+		horizontal = false;
+		boolean ok3 = battleship3.okToPlaceShipAt(row, column, horizontal, ocean);
+		assertFalse(ok3, "Not OK to place ship horizontally adjacent to the right.");
+
+		//test fourth ship
+		//vertically adjacent
+		Battleship battleship4 = new Battleship();
+		row = 3;
+		column = 0;
+		horizontal = false;
+		boolean ok4 = battleship4.okToPlaceShipAt(row, column, horizontal, ocean);
+		assertFalse(ok4, "Not OK to place ship vertically adjacent above.");
+
+		//test fifth ship
+		//successfully placed
+		Battleship battleship5 = new Battleship();
+		row = 5;
+		column = 3;
+		horizontal = false;
+		boolean ok5 = battleship5.okToPlaceShipAt(row, column, horizontal, ocean);
+		assertTrue(ok5, "OK to place ship here.");
 	}
 
 	@Test

@@ -57,9 +57,12 @@ public class Ocean {
 
     private void initializeShipsArray(){
         //initialize the ships array
-        for (int i = 0; i < 9; i++){
-            for (int j = 0 ; j < 9; j++){
+        for (int i = 0; i < 10; i++){
+            for (int j = 0 ; j < 10; j++){
                 this.ships[i][j] = new EmptySea();
+
+                this.ships[i][j].setBowRow(i);
+                this.ships[i][j].setBowColumn(j);
             }
         }
     }
@@ -71,44 +74,44 @@ public class Ocean {
      */
 
     void placeAllShipsRandomly(){
-        //place battleships
-        for (int i = 0 ; i < 1 ; i++){
-            int row = (int) (Math.random()*10);
-            int column = (int) (Math.random()*10);
-            boolean horizontal = (Math.random() < 0.5);
-            if (this.ships[row][column].okToPlaceShipAt(row,column,horizontal,this)){
-                this.ships[row][column] = new Battleship();
-                this.ships[row][column].placeShipAt(row,column,horizontal,this);
-            }
-        }
-        //place cruisers
-        for (int i = 0 ; i < 2 ; i++){
-            int row = (int) (Math.random()*10);
-            int column = (int) (Math.random()*10);
-            boolean horizontal = (Math.random() < 0.5);
-            if (this.ships[row][column].okToPlaceShipAt(row,column,horizontal,this)){
-                this.ships[row][column] = new Cruiser();
-                this.ships[row][column].placeShipAt(row,column,horizontal,this);
-            }
-        }
-        //place destroyers
-        for (int i = 0 ; i < 3 ; i++){
-            int row = (int) (Math.random()*10);
-            int column = (int) (Math.random()*10);
-            boolean horizontal = (Math.random() < 0.5);
-            if (this.ships[row][column].okToPlaceShipAt(row,column,horizontal,this)){
-                this.ships[row][column] = new Destroyer();
-                this.ships[row][column].placeShipAt(row,column,horizontal,this);
-            }
-        }
-        //place submarines
-        for (int i = 0 ; i < 4 ; i++){
-            int row = (int) (Math.random()*10);
-            int column = (int) (Math.random()*10);
-            boolean horizontal = (Math.random() < 0.5);
-            if (this.ships[row][column].okToPlaceShipAt(row,column,horizontal,this)){
-                this.ships[row][column] = new Submarine();
-                this.ships[row][column].placeShipAt(row,column,horizontal,this);
+
+        //initialize the ships array
+        this.initializeShipsArray();
+
+        Ship battleship = new Battleship();
+        Ship cruiser = new Cruiser();
+        Ship destroyer = new Destroyer();
+        Ship submarine = new Submarine();
+
+
+        //place the battleship
+        this.placeOneKindOfShipRandomly(1, battleship);
+
+        //place the cruiser
+        this.placeOneKindOfShipRandomly(2, cruiser);
+
+        //place the cruiser
+        this.placeOneKindOfShipRandomly(3, destroyer);
+
+        //place the destroyer
+        this.placeOneKindOfShipRandomly(4, submarine);
+    }
+
+    /**
+     * A private helper method to place one ship randomly
+     * @param num the number of the ship
+     * @param ship the ship
+     */
+
+    void placeOneKindOfShipRandomly (int num, Ship ship){
+        while (num > 0){
+            int row = (int) (Math.random() * 10);
+            int column = (int) (Math.random() * 10);
+            boolean horizontal = (Math.random() >= 0.5);
+
+            if (ship.okToPlaceShipAt(row, column, horizontal, this)){
+                ship.placeShipAt(row, column, horizontal, this);
+                num--;
             }
         }
     }
@@ -130,12 +133,25 @@ public class Ocean {
      */
 
     boolean shootAt(int row, int column){
+        //increment shotsFired
         this.shotsFired++;
 
-        if (this.ships[row][column].shootAt(row,column)){
+        //if the location is occupied
+        if (this.isOccupied(row, column)){
+            //increment hitCount
             this.hitCount++;
+
+            //if the ship is sunk
+            if (this.ships[row][column].isSunk()){
+                //increment shipsSunk
+                this.shipsSunk++;
+            }
+
+            //return true
             return true;
         }
+
+        //return false
         return false;
     }
 
@@ -188,14 +204,28 @@ public class Ocean {
 
     /**
      * Prints the ocean
+     * Prints the Ocean. To aid the user, row numbers should be displayed along the
+     * left edge of the array, and column numbers should be displayed along the top.
+     * Numbers should be 0 to 9, not 1 to 10.
+     * o The top left corner square should be 0, 0.
+     * o ‘x’: Use ‘x’ to indicate a location that you have fired upon and hit a (real) ship.
+     * (reference the description of toString in the Ship class)
+     * o ‘-’: Use ‘-’ to indicate a location that you have fired upon and found nothing
+     * there. (reference the description of toString in the EmptySea class)
+     * o ‘s’: Use ‘s’ to indicate a location containing a sunken ship. (reference the
+     * description of toString in the Ship class)
+     * o ‘.’: and use ‘.’ (a period) to indicate a location that you have never fired upon
+     * o This is the only method in the Ocean class that does any input/output, and it is
+     * never called from within the Ocean class, only from the BattleshipGame
+     * class.
      */
 
     void print(){
         System.out.println("  0 1 2 3 4 5 6 7 8 9\n");
-        for (int i = 0 ; i < 9 ; i++){
-            System.out.println("i ");
-            for (int j = 0 ; j < 9 ; j++){
-                System.out.println(this.ships[i][j].getShipType().toLowerCase().charAt(0)+" ");
+        for (int i = 0; i < 10; i++){
+            System.out.print(i + " ");
+            for (int j = 0; j < 10; j++){
+                System.out.print(this.ships[i][j].toString() + " ");
             }
             System.out.println("\n");
         }
@@ -207,10 +237,10 @@ public class Ocean {
 
     void printWithShips() {
         System.out.println("  0 1 2 3 4 5 6 7 8 9\n");
-        for (int i = 0; i < 9; i++) {
-            System.out.println("i ");
-            for (int j = 0; j < 9; j++) {
-                System.out.println(this.ships[i][j].getShipType().toLowerCase().charAt(0) + " ");
+        for (int i = 0; i < 10; i++){
+            System.out.print(i + " ");
+            for (int j = 0; j < 10; j++){
+                System.out.print(this.ships[i][j].toString() + " ");
             }
             System.out.println("\n");
         }

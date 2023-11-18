@@ -13,12 +13,11 @@ public class BattleshipGame {
         //place all the ships randomly
         ocean.placeAllShipsRandomly();
 
+        Ship [][] ships = ocean.getShipArray();
+
         //print the ocean
-        System.out.println("The ocean is: ");
         ocean.print();
 
-        //print the number of shots fired
-        System.out.println("The number of shots fired is: " + ocean.getShotsFired());
 
 
     }

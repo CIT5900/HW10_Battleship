@@ -155,7 +155,7 @@ public abstract class Ship {
                 oktoplace = false;
             }else{
                 for (int i = 0; i < this.length; i++){
-                    if (isAdjacentToBoat(row, column - i, ocean)){
+                    if (isAdjacentToBow(row, column - i, ocean)){
                         oktoplace = false;
                     }
                 }
@@ -165,7 +165,7 @@ public abstract class Ship {
                 oktoplace = false;
             }else{
                 for (int i = 0; i < this.length; i++){
-                    if (isAdjacentToBoat(row - i, column, ocean)){
+                    if (isAdjacentToBow(row - i, column, ocean)){
                         oktoplace = false;
                     }
                 }
@@ -182,7 +182,7 @@ public abstract class Ship {
      * @return true if the given location is adjacent to a ship, false otherwise
      */
 
-    boolean isAdjacentToBoat(int row, int column, Ocean ocean){
+    boolean isAdjacentToBow(int row, int column, Ocean ocean){
         boolean adjacent = false;
         for (int i = -1; i < 2 ; i++){
             for (int j = -1; j < 2 ; j++){
