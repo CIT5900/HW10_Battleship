@@ -264,4 +264,16 @@ public abstract class Ship {
         return issunk;
     }
 
+    /**
+     * @return a single-character String to use in the Ocean’s print method
+     */
+
+    @Override
+    public String toString(){
+        if (this.isSunk()){
+            return "x";
+        }else{
+            return "S";
+        }
+    }
 }
