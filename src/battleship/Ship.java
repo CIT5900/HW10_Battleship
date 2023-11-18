@@ -174,6 +174,14 @@ public abstract class Ship {
         return oktoplace;
     }
 
+    /**
+     * A helper method for okToPlaceShipAt
+     * @param row of the bow
+     * @param column of the bow
+     * @param ocean the ocean
+     * @return true if the given location is adjacent to a ship, false otherwise
+     */
+
     boolean isAdjacentToBoat(int row, int column, Ocean ocean){
         boolean adjacent = false;
         for (int i = -1; i < 2 ; i++){
