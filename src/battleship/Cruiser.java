@@ -2,6 +2,7 @@ package battleship;
 
 /**
  * Represents a cruiser in the game of Battleship
+ * @author Haoyuan Zhu
  */
 
 public class Cruiser extends Ship {
@@ -16,11 +17,19 @@ public class Cruiser extends Ship {
 
     //constructor
 
+    /**
+     * A zero-argument public constructor to set the length variable to the correct value
+     */
+
     public Cruiser() {
         super(length);
     }
 
     //methods
+
+    /**
+     * @return a string representation of the cruiser
+     */
 
     @Override
     public String getShipType() {
