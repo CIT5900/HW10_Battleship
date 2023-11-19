@@ -42,10 +42,55 @@ public class BattleshipGame {
 
             //ask the user to enter the row and column of the shot
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter the row of your shot: ");
-            int row = scanner.nextInt();
-            System.out.println("Enter the column of your shot: ");
-            int column = scanner.nextInt();
+
+            //create a variable to store the input
+            String input;
+
+            //create variables to store the row and column of the shot
+            int row = 0;
+            int column = 0;
+            boolean isInputValid = false;
+
+            //loop until the input is valid
+            while (!isInputValid) {
+
+                //ask the user to enter the row and column of the shot
+                System.out.println("Enter the row and column of the shot, in ’row, column‘: ");
+
+                //store the input
+                input = scanner.nextLine();
+
+                //split the input
+                String[] inputArray = input.split(",");
+
+                if (inputArray.length == 2) {  //check if the input is in the format of 'row, column'
+
+                    //trim the input
+                    String rowString = inputArray[0].trim();
+                    String columnString = inputArray[1].trim();
+
+                    try {  //check if the row and column are int
+                        row = Integer.parseInt(rowString);
+                        column = Integer.parseInt(columnString);
+
+                        //check if the row and column are in the range of 0 to 9
+                        if (row >= 0 && row <= 9 && column >= 0 && column <= 9) {
+                            isInputValid = true;
+
+                        } else {  //print the error message
+                            System.out.println("The row and column must be in the range of 0 to 9!");
+                        }
+
+                        //catch the NumberFormatException
+                    } catch (NumberFormatException e) {
+                        System.out.println("The row and column must be int!");
+                    }
+
+                    //print the error message
+                } else {
+                    System.out.println("The input must be in the format of 'row, column'!");
+                }
+            }
 
             //shoot at the location
             isShootAt = ocean.shootAt(row, column);
