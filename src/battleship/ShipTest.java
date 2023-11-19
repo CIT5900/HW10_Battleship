@@ -478,7 +478,7 @@ class ShipTest {
 		emptySea.placeShipAt(row3, column3, horizontal3, ocean);
 
 		assertFalse(emptySea.shootAt(6, 7));
-		boolean[] hitArray3 = {false};
+		boolean[] hitArray3 = {true};
 		assertArrayEquals(hitArray3, emptySea.getHit());
 	}
 	

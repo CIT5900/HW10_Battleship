@@ -52,7 +52,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.BattleshipGame">
+  <component name="RunManager" selected="JUnit.OceanTest">
     <configuration name="BattleshipGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="battleship.BattleshipGame" />
       <module name="Battleship" />
@@ -66,7 +66,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OceanTest.testGetShipArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OceanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Battleship" />
       <extension name="coverage">
         <pattern>
@@ -76,8 +76,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="battleship" />
       <option name="MAIN_CLASS_NAME" value="battleship.OceanTest" />
-      <option name="METHOD_NAME" value="testGetShipArray" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShipTest.testSetHorizontal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Battleship" />
       <extension name="coverage">
         <pattern>
@@ -108,8 +107,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="battleship" />
       <option name="MAIN_CLASS_NAME" value="battleship.ShipTest" />
-      <option name="METHOD_NAME" value="testSetHorizontal" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OceanTest" />
+        <item itemvalue="JUnit.ShipTest" />
         <item itemvalue="Application.BattleshipGame" />
         <item itemvalue="JUnit.OceanTest.testPrint" />
         <item itemvalue="JUnit.ShipTest.testShootAt" />
-        <item itemvalue="JUnit.ShipTest.testSetHorizontal" />
-        <item itemvalue="JUnit.OceanTest.testGetShipArray" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +150,7 @@
       <workItem from="1700281736767" duration="71000" />
       <workItem from="1700281857935" duration="7952000" />
       <workItem from="1700338031245" duration="42371000" />
-      <workItem from="1700417035841" duration="1669000" />
+      <workItem from="1700417035841" duration="2093000" />
     </task>
     <servers />
   </component>
