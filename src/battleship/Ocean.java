@@ -221,7 +221,7 @@ public class Ocean {
      */
 
     void print(){
-        System.out.println("  0 1 2 3 4 5 6 7 8 9\n");
+        System.out.println("  0 1 2 3 4 5 6 7 8 9");
         for (int i = 0; i < 10; i++){
             System.out.print(i + " ");
             for (int j = 0; j < 10; j++){
@@ -233,16 +233,47 @@ public class Ocean {
 
     /**
      * Prints the ocean with ships
+     * USED FOR DEBUGGING PURPOSES ONLY.
+     * o Like the print() method, this method prints the Ocean with row numbers
+     * displayed along the left edge of the array, and column numbers displayed along
+     * the top. Numbers should be 0 to 9, not 1 to 10. The top left corner square
+     * should be 0, 0.
+     * o Unlike the print() method, this method shows the location of the ships.
+     * This method can be used during development and debugging, to see where
+     * ships are actually being placed in the Ocean. (The TAs may also use this
+     * method when running your program and grading.) It can be called from the
+     * BattleshipGame class, after creating the Ocean and placing ships in it.
+     * o Be sure to comment out any call to this method before actually playing the
+     * game and before submitting your Java project.
+     * o ‘b’: Use ‘b’ to indicate a Battleship.
+     * o ‘c’: Use ‘c’ to indicate a Cruiser.
+     * o ‘d’: Use ‘d’ to indicate a Destroyer.
+     * o ‘s’: Use ‘s’ to indicate a Submarine.
+     * o ‘ ‘: Use ‘ ’ (single space) to indicate an EmptySea.
      */
 
     void printWithShips() {
-        System.out.println("  0 1 2 3 4 5 6 7 8 9\n");
+        System.out.println("  0 1 2 3 4 5 6 7 8 9");
         for (int i = 0; i < 10; i++){
             System.out.print(i + " ");
             for (int j = 0; j < 10; j++){
-                System.out.print(this.ships[i][j].toString() + " ");
+                if (Objects.equals(this.ships[i][j].getShipType(), "battleship")){
+                    System.out.print("b ");
+                }
+                else if (Objects.equals(this.ships[i][j].getShipType(), "cruiser")){
+                    System.out.print("c ");
+                }
+                else if (Objects.equals(this.ships[i][j].getShipType(), "destroyer")){
+                    System.out.print("d ");
+                }
+                else if (Objects.equals(this.ships[i][j].getShipType(), "submarine")){
+                    System.out.print("s ");
+                }
+                else {
+                    System.out.print("  ");
+                }
             }
-            System.out.println("\n");
+            System.out.println();
         }
     }
 }

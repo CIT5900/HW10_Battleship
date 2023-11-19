@@ -16,9 +16,6 @@ public class BattleshipGame {
         Ship [][] ships = ocean.getShipArray();
 
         //print the ocean
-        ocean.print();
-
-
-
+        ocean.printWithShips();
     }
 }
