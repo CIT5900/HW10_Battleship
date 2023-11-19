@@ -411,24 +411,4 @@ class OceanTest {
 
 		assertEquals("cruiser", shipArray[9][9].getShipType());
 	}
-
-	@Test
-	void testPrint() {
-
-		//test with empty ocean
-
-		ocean.shootAt(0, 0);
-		System.out.println(ocean.getShipArray()[0][0].getHit()[0]);
-		System.out.println(ocean.getShipArray()[0][0].toString());
-
-		int index = 0;
-		boolean isHit = false;
-
-		System.out.println(ocean.getShipArray()[0][0].isHorizontal());
-		index = ocean.getShipArray()[0][0].getBowRow();
-		isHit = ocean.getShipArray()[0][0].getHit()[index];
-		System.out.println(index);
-
-		ocean.print();
-	}
 }
