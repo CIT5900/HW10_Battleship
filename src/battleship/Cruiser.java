@@ -2,7 +2,7 @@ package battleship;
 
 /**
  * Represents a cruiser in the game of Battleship
- * @author Haoyuan Zhu
+ * @author Haoyuan Zhu & Chengjun Li
  */
 
 public class Cruiser extends Ship {

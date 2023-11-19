@@ -2,7 +2,7 @@ package battleship;
 
 /**
  * Represents a submarine in the game of Battleship
- * @author Haoyuan Zhu
+ * @author Haoyuan Zhu & Chengjun Li
  */
 
 class Submarine extends Ship {

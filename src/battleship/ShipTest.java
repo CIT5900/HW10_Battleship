@@ -5,6 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Represents the unit test of ship in the game of Battleship
+ * @author Haoyuan Zhu & Chengjun Li
+ */
+
 class ShipTest {
 
 	Ocean ocean;

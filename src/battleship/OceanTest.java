@@ -3,10 +3,14 @@ package battleship;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+/**
+ * Represents the unit test of ocean in the game of Battleship
+ * @author Haoyuan Zhu & Chengjun Li
+ */
 
 class OceanTest {
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * Represents the game of Battleship
- * @author Haoyuan Zhu
+ * @author Haoyuan Zhu & Chengjun Li
  */
 
 public class BattleshipGame {

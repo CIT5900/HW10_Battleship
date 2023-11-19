@@ -2,7 +2,7 @@ package battleship;
 
 /**
  * Represents an empty sea in the game of Battleship
- * @author Haoyuan Zhu
+ * @author Haoyuan Zhu & Chengjun Li
  */
 
 class EmptySea extends Ship {

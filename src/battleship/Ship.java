@@ -2,7 +2,7 @@ package battleship;
 
 /**
  * Represents a ship in the game of Battleship
- * @author Haoyuan Zhu
+ * @author Haoyuan Zhu & Chengjun Li
  */
 
 public abstract class Ship {

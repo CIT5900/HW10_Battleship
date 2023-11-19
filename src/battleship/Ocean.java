@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Represents the ocean in the game of Battleship
- * @author Haoyuan Zhu
+ * @author Haoyuan Zhu & Chengjun Li
  */
 
 public class Ocean {
