@@ -38,6 +38,7 @@ public class BattleshipGame {
 
             System.out.println("----------------------------------");
 
+            //print the number of shots that have been fired
             System.out.println("Shot " + (ocean.getShotsFired() + 1) + ": ");
 
             //ask the user to enter the row and column of the shot
@@ -52,12 +53,14 @@ public class BattleshipGame {
 
             System.out.println();
 
+            //check if the shot hit a ship
             if(ocean.isOccupied(row, column)){
                 System.out.println("Hit!");
             } else {
                 System.out.println("Miss!");
             }
 
+            //check if the shot sunk a ship
             if(ocean.getShipArray()[row][column].isSunk() && isShootAt){
                 System.out.println();
                 System.out.println("You just sank a ship - " + ocean.getShipArray()[row][column].getShipType() + "!");
@@ -71,8 +74,10 @@ public class BattleshipGame {
 
         System.out.println("----------------------------------");
 
+        //print the game over message
         System.out.println("Game Over!");
 
+        //print the best possible score
         System.out.println("The best possible score: 20");
 
         //print the final scores
