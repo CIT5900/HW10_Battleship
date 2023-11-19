@@ -30,7 +30,7 @@ public class Ocean {
     private int hitCount;
 
     /**
-     * The number of ships sunk (10 ships in all)
+     * The number of ships sunk
      */
 
     private int shipsSunk;
@@ -145,25 +145,16 @@ public class Ocean {
      */
 
     boolean shootAt(int row, int column){
-        //increment shotsFired
         this.shotsFired++;
-
-        //if the location is occupied
         if (this.isOccupied(row, column)){
-            //increment hitCount
-            this.hitCount++;
-
-            //if the ship is sunk
-            if (this.ships[row][column].isSunk()){
-                //increment shipsSunk
-                this.shipsSunk++;
+            if (this.ships[row][column].shootAt(row, column)){
+                this.hitCount++;
+                if (this.ships[row][column].isSunk()){
+                    this.shipsSunk++;
+                }
+                return true;
             }
-
-            //return true
-            return true;
         }
-
-        //return false
         return false;
     }
 

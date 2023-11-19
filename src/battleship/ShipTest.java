@@ -242,7 +242,35 @@ class ShipTest {
 		
 		//TODO
 		//More tests
-		
+		Ship battleship = new Battleship();
+		row = 0;
+		column = 9;
+		horizontal = true;
+		battleship.placeShipAt(row, column, horizontal, ocean);
+
+		assertFalse(battleship.shootAt(1, 9));
+		assertFalse(battleship.isSunk());
+
+		battleship.shootAt(0, 9);
+		assertFalse(battleship.isSunk());
+		battleship.shootAt(0, 8);
+		assertFalse(battleship.isSunk());
+		battleship.shootAt(0, 7);
+		assertFalse(battleship.isSunk());
+		battleship.shootAt(0, 6);
+		assertTrue(battleship.isSunk());
+
+		Ship destroyer = new Destroyer();
+		row = 1;
+		column = 5;
+		horizontal = false;
+		destroyer.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(destroyer.shootAt(1, 5));
+		assertFalse(destroyer.isSunk());
+
+		assertTrue(destroyer.shootAt(0, 5));
+		assertTrue(destroyer.isSunk());
 	}
 
 	@Test

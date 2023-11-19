@@ -205,9 +205,11 @@ public abstract class Ship {
      */
 
     void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
-        this.bowRow = row;
-        this.bowColumn = column;
-        this.horizontal = horizontal;
+
+        this.setBowRow(row);
+        this.setBowColumn(column);
+        this.setHorizontal(horizontal);
+
         if (horizontal){
             for (int i = 0; i < this.length ; i++){
                 ocean.getShipArray()[row][column-i] = this;
@@ -221,27 +223,32 @@ public abstract class Ship {
 
     /**
      * If a part of the ship occupies the given row and column
-     * and the ship hasn’t been sunk
-     * mark that part of the ship as “hit”
+     * and the ship hasn’t been sunk, mark that part of the ship as “hit”
      * @param row for the bow
      * @param column for the bow
      * @return true if a part of the ship occupies the given row and column and the ship has not been sunk
      */
 
     boolean shootAt(int row, int column){
-        boolean shootat = false;
-        if (this.isSunk()){
-            if (this.horizontal){
-                if (this.bowRow == row && (column<=this.bowColumn && column>=this.bowColumn-this.length)){
-                    shootat = true;
-                }
-            }else{
-                if (this.bowColumn == column && (row<=this.bowRow && row>=this.bowRow-this.length)){
-                    shootat = true;
-                }
+
+        boolean hit = false;
+
+        if(this.isSunk()){
+            return hit;
+        }
+
+        if (this.isHorizontal()){
+            if (row == this.bowRow && column <= this.bowColumn && column >= this.bowColumn - this.length + 1){
+                this.hit[column - this.bowColumn + this.length - 1] = true;
+                hit = true;
+            }
+        }else{
+            if (column == this.bowColumn && row <= this.bowRow && row >= this.bowRow - this.length + 1){
+                this.hit[row - this.bowRow + this.length - 1] = true;
+                hit = true;
             }
         }
-        return shootat;
+        return hit;
     }
 
     /**
@@ -249,13 +256,14 @@ public abstract class Ship {
      */
 
     boolean isSunk() {
-        boolean issunk = true;
-        for (int i = 0; i < this.length ; i++){
+        boolean sunk = true;
+        for (int i = 0; i < this.length; i++){
+
             if (!this.hit[i]){
-                issunk = false;
+                sunk = false;
             }
         }
-        return issunk;
+        return sunk;
     }
 
     /**
