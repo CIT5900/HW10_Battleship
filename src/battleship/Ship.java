@@ -149,12 +149,15 @@ public abstract class Ship {
      */
 
     boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
+
+        //create a boolean variable to store the result
         boolean okToPlace = true;
-        if (horizontal){
-            if (column - this.length < -1){
+
+        if (horizontal){  //check if the ship is horizontal
+            if (column - this.length < -1){  //check if the given location is out of the ocean
                 okToPlace = false;
             }else{
-                for (int i = 0; i < this.length; i++){
+                for (int i = 0; i < this.length; i++){  //check if the given location is adjacent to a ship
                     if (isAdjacentToBow(row, column - i, ocean)){
                         okToPlace = false;
                     }
@@ -171,6 +174,8 @@ public abstract class Ship {
                 }
             }
         }
+
+        //return the result
         return okToPlace;
     }
 
@@ -182,17 +187,27 @@ public abstract class Ship {
      * @return true if the given location is adjacent to a ship, false otherwise
      */
 
-    boolean isAdjacentToBow(int row, int column, Ocean ocean){
+    private boolean isAdjacentToBow(int row, int column, Ocean ocean){
+
+        //create a boolean variable to store the result
         boolean adjacent = false;
+
+        //iterate through the 3*3 area around the given location
         for (int i = -1; i < 2 ; i++){
             for (int j = -1; j < 2 ; j++){
+
+                //check if the location is out of the ocean
                 if (row + i >= 0 && row + i < 10 && column + j >= 0 && column + j < 10) {
+
+                    //check if the location is occupied by a ship
                     if (ocean.isOccupied(row + i, column + j)) {
                         adjacent = true;
                     }
                 }
             }
         }
+
+        //return the result
         return adjacent;
     }
 
@@ -206,14 +221,18 @@ public abstract class Ship {
 
     void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
 
+        //set the bowRow, bowColumn, and horizontal instance variables
         this.setBowRow(row);
         this.setBowColumn(column);
         this.setHorizontal(horizontal);
 
-        if (horizontal){
+        if (horizontal){  //check if the ship is horizontal
+
+            //place the ship in the ocean
             for (int i = 0; i < this.length ; i++){
                 ocean.getShipArray()[row][column-i] = this;
             }
+
         }else{
             for (int i = 0; i < this.length ; i++){
                 ocean.getShipArray()[row-i][column] = this;
@@ -231,19 +250,31 @@ public abstract class Ship {
 
     boolean shootAt(int row, int column){
 
+        //create a boolean variable to store the result
         boolean hit = false;
 
+        //check if the ship has been sunk
         if(this.isSunk()){
+
+            //return false if the ship has been sunk
             return false;
         }
 
+        //create an index variable to store the index of the hit array
         int index = 0;
 
-        if (this.isHorizontal()){
+        if (this.isHorizontal()){  //check if the ship is horizontal
 
+            //calculate the index of the hit array
             index = this.bowColumn - column;
+
+            //check if the given location is occupied by the ship
             if (row == this.bowRow && column <= this.bowColumn && column >= this.bowColumn - this.length + 1){
+
+                //mark that part of the ship as “hit”
                 this.hit[index] = true;
+
+                //set the result to true
                 hit = true;
             }
         }else{
@@ -254,6 +285,8 @@ public abstract class Ship {
                 hit = true;
             }
         }
+
+        //return the result
         return hit;
     }
 
@@ -262,14 +295,23 @@ public abstract class Ship {
      */
 
     boolean isSunk() {
+
+        //create a boolean variable to store the result
         boolean sunk = true;
+
+        //iterate through the hit array
         for (int i = 0; i < this.length; i++){
 
+            //check if every part of the ship has been hit
             if (!this.hit[i]) {
                 sunk = false;
+
+                //break the loop if a part of the ship has not been hit
                 break;
             }
         }
+
+        //return the result
         return sunk;
     }
 
@@ -279,9 +321,14 @@ public abstract class Ship {
 
     @Override
     public String toString(){
-        if (this.isSunk()){
+
+        if (this.isSunk()){  //check if the ship has been sunk
+
+            //return "x" if the ship has been sunk
             return "s";
         }else{
+
+            //return "x" if the ship has not been sunk
             return "x";
         }
     }
