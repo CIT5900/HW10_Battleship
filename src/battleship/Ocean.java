@@ -78,38 +78,50 @@ public class Ocean {
         //initialize the ships array
         this.initializeShipsArray();
 
-        Ship battleship = new Battleship();
-        Ship cruiser = new Cruiser();
-        Ship destroyer = new Destroyer();
-        Ship submarine = new Submarine();
-
-
         //place the battleship
-        this.placeOneKindOfShipRandomly(1, battleship);
+        this.placeOneKindOfShipRandomly(1, "battleship");
 
         //place the cruiser
-        this.placeOneKindOfShipRandomly(2, cruiser);
+        this.placeOneKindOfShipRandomly(2, "cruiser");
 
         //place the cruiser
-        this.placeOneKindOfShipRandomly(3, destroyer);
+        this.placeOneKindOfShipRandomly(3, "destroyer");
 
         //place the destroyer
-        this.placeOneKindOfShipRandomly(4, submarine);
+        this.placeOneKindOfShipRandomly(4, "submarine");
     }
 
     /**
      * A private helper method to place one ship randomly
      * @param num the number of the ship
-     * @param ship the ship
+     * @param shipType the ship type
      */
 
-    void placeOneKindOfShipRandomly (int num, Ship ship){
+    void placeOneKindOfShipRandomly (int num, String shipType){
+
+        //create a new ship
+        Ship ship = null;
+
         while (num > 0){
+
+            if (Objects.equals(shipType, "battleship")){
+                ship = new Battleship();
+            }
+            else if (Objects.equals(shipType, "cruiser")){
+                ship = new Cruiser();
+            }
+            else if (Objects.equals(shipType, "destroyer")){
+                ship = new Destroyer();
+            }
+            else if (Objects.equals(shipType, "submarine")){
+                ship = new Submarine();
+            }
+
             int row = (int) (Math.random() * 10);
             int column = (int) (Math.random() * 10);
             boolean horizontal = (Math.random() >= 0.5);
 
-            if (ship.okToPlaceShipAt(row, column, horizontal, this)){
+            if (ship != null && ship.okToPlaceShipAt(row, column, horizontal, this)){
                 ship.placeShipAt(row, column, horizontal, this);
                 num--;
             }
