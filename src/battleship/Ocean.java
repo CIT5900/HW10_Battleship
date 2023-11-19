@@ -207,20 +207,6 @@ public class Ocean {
 
     /**
      * Prints the ocean
-     * Prints the Ocean. To aid the user, row numbers should be displayed along the
-     * left edge of the array, and column numbers should be displayed along the top.
-     * Numbers should be 0 to 9, not 1 to 10.
-     * o The top left corner square should be 0, 0.
-     * o ‘x’: Use ‘x’ to indicate a location that you have fired upon and hit a (real) ship.
-     * (reference the description of toString in the Ship class)
-     * o ‘-’: Use ‘-’ to indicate a location that you have fired upon and found nothing
-     * there. (reference the description of toString in the EmptySea class)
-     * o ‘s’: Use ‘s’ to indicate a location containing a sunken ship. (reference the
-     * description of toString in the Ship class)
-     * o ‘.’: and use ‘.’ (a period) to indicate a location that you have never fired upon
-     * o This is the only method in the Ocean class that does any input/output, and it is
-     * never called from within the Ocean class, only from the BattleshipGame
-     * class.
      */
 
     void print(){
@@ -236,23 +222,6 @@ public class Ocean {
 
     /**
      * Prints the ocean with ships
-     * USED FOR DEBUGGING PURPOSES ONLY.
-     * o Like the print() method, this method prints the Ocean with row numbers
-     * displayed along the left edge of the array, and column numbers displayed along
-     * the top. Numbers should be 0 to 9, not 1 to 10. The top left corner square
-     * should be 0, 0.
-     * o Unlike the print() method, this method shows the location of the ships.
-     * This method can be used during development and debugging, to see where
-     * ships are actually being placed in the Ocean. (The TAs may also use this
-     * method when running your program and grading.) It can be called from the
-     * BattleshipGame class, after creating the Ocean and placing ships in it.
-     * o Be sure to comment out any call to this method before actually playing the
-     * game and before submitting your Java project.
-     * o ‘b’: Use ‘b’ to indicate a Battleship.
-     * o ‘c’: Use ‘c’ to indicate a Cruiser.
-     * o ‘d’: Use ‘d’ to indicate a Destroyer.
-     * o ‘s’: Use ‘s’ to indicate a Submarine.
-     * o ‘ ‘: Use ‘ ’ (single space) to indicate an EmptySea.
      */
 
     void printWithShips() {

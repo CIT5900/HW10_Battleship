@@ -149,29 +149,29 @@ public abstract class Ship {
      */
 
     boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
-        boolean oktoplace = true;
+        boolean okToPlace = true;
         if (horizontal){
             if (column - this.length < -1){
-                oktoplace = false;
+                okToPlace = false;
             }else{
                 for (int i = 0; i < this.length; i++){
                     if (isAdjacentToBow(row, column - i, ocean)){
-                        oktoplace = false;
+                        okToPlace = false;
                     }
                 }
             }
         }else{
             if (row - this.length < -1){
-                oktoplace = false;
+                okToPlace = false;
             }else{
                 for (int i = 0; i < this.length; i++){
                     if (isAdjacentToBow(row - i, column, ocean)){
-                        oktoplace = false;
+                        okToPlace = false;
                     }
                 }
             }
         }
-        return oktoplace;
+        return okToPlace;
     }
 
     /**
@@ -223,7 +223,7 @@ public abstract class Ship {
 
     /**
      * If a part of the ship occupies the given row and column
-     * and the ship hasn’t been sunk, mark that part of the ship as “hit”
+     * and the ship has not been sunk, mark that part of the ship as “hit”
      * @param row for the bow
      * @param column for the bow
      * @return true if a part of the ship occupies the given row and column and the ship has not been sunk
@@ -234,7 +234,7 @@ public abstract class Ship {
         boolean hit = false;
 
         if(this.isSunk()){
-            return hit;
+            return false;
         }
 
         if (this.isHorizontal()){
@@ -259,8 +259,9 @@ public abstract class Ship {
         boolean sunk = true;
         for (int i = 0; i < this.length; i++){
 
-            if (!this.hit[i]){
+            if (!this.hit[i]) {
                 sunk = false;
+                break;
             }
         }
         return sunk;

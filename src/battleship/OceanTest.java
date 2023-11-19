@@ -29,11 +29,11 @@ class OceanTest {
 		//tests that all locations in the ocean are "empty"
 		
 		Ship[][] ships = ocean.getShipArray();
-		
+
 		for (int i = 0; i < ships.length; i++) {
 			for (int j = 0; j < ships[i].length; j++) {
 				Ship ship = ships[i][j];
-				
+
 				assertEquals("empty", ship.getShipType());
 			}
 		}
@@ -58,7 +58,7 @@ class OceanTest {
 		Ship[][] ships = ocean.getShipArray();
 		ArrayList<Ship> shipsFound = new ArrayList<Ship>();
 
-		int numBattlehips = 0;
+		int numBattleships = 0;
 		int numCruisers = 0;
 		int numDestroyers = 0;
 		int numSubmarines = 0;
@@ -75,7 +75,7 @@ class OceanTest {
 		
 		for (Ship ship : shipsFound) {
 			if ("battleship".equals(ship.getShipType())) {		
-				numBattlehips++;
+				numBattleships++;
 			} else if ("cruiser".equals(ship.getShipType())) {
 				numCruisers++;
 			} else if ("destroyer".equals(ship.getShipType())) {
@@ -87,7 +87,7 @@ class OceanTest {
 			}
 		}
 		
-		assertEquals(NUM_BATTLESHIPS, numBattlehips);
+		assertEquals(NUM_BATTLESHIPS, numBattleships);
 		assertEquals(NUM_CRUISERS, numCruisers);
 		assertEquals(NUM_DESTROYERS, numDestroyers);
 		assertEquals(NUM_SUBMARINES, numSubmarines);
