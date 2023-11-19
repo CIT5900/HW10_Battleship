@@ -1,6 +1,5 @@
 package battleship;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -31,7 +30,7 @@ public class BattleshipGame {
         //print the ocean
         ocean.print();
 
-        boolean isShootAt = false;
+        boolean isShootAt;
 
         //loop the game until all the ships are sunk
         while (!ocean.isGameOver()) {

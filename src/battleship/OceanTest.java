@@ -109,7 +109,7 @@ class OceanTest {
 
 	@Test
 	void testIsOccupied() {
-
+		//Scenario 1
 		Destroyer destroyer = new Destroyer();
 		int row = 1;
 		int column = 5;
@@ -126,29 +126,32 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//Scenario 2
 		//test with empty sea
 		assertFalse(ocean.isOccupied(0, 1));
 		assertFalse(ocean.isOccupied(1, 0));
 		assertFalse(ocean.isOccupied(3, 3));
 
+		//Scenario 3
 		//test with a new battleship
 		Battleship battleship = new Battleship();
 		row = 5;
 		column = 5;
 		horizontal = false;
 		battleship.placeShipAt(row, column, horizontal, ocean);
-
+		//test if it is occupied
 		assertTrue(ocean.isOccupied(5, 5));
 		assertFalse(ocean.isOccupied(5, 6));
 		assertFalse(ocean.isOccupied(5, 7));
 
+		//Scenario 4
 		//test with a new cruiser
 		Cruiser cruiser = new Cruiser();
 		row = 9;
 		column = 9;
 		horizontal = false;
 		cruiser.placeShipAt(row, column, horizontal, ocean);
-
+		//test if it is occupied
 		assertTrue(ocean.isOccupied(9, 9));
 		assertFalse(ocean.isOccupied(9, 8));
 		assertFalse(ocean.isOccupied(9, 7));
@@ -156,7 +159,8 @@ class OceanTest {
 
 	@Test
 	void testShootAt() {
-	
+
+		//Scenario 1
 		assertFalse(ocean.shootAt(0, 1));
 		
 		Destroyer destroyer = new Destroyer();
@@ -172,58 +176,60 @@ class OceanTest {
 
 		//TODO
 		//More tests
-		//test if it update the number of shots fired
+		//Scenario 2
+		//test if it updates the number of shots fired
 		assertEquals(3, ocean.getShotsFired());
-		//test if it update the number of hits
+		//test if it updates the number of hits
 		assertEquals(2, ocean.getHitCount());
-		//test if it update the number of ships sunk
+		//test if it updates the number of ships sunk
 		assertEquals(1, ocean.getShipsSunk());
 
+		//Scenario 3
 		//test with a new battleship
 		Battleship battleship = new Battleship();
 		row = 5;
 		column = 5;
 		horizontal = false;
 		battleship.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the battleship
 		assertTrue(ocean.shootAt(5, 5));
 		assertFalse(battleship.isSunk());
 		assertTrue(ocean.shootAt(4, 5));
 		assertTrue(ocean.shootAt(3, 5));
 		assertTrue(ocean.shootAt(2, 5));
 		assertTrue(battleship.isSunk());
-
-		//test if it update the number of shots fired
+		//test if it updates the number of shots fired
 		assertEquals(7, ocean.getShotsFired());
-		//test if it update the number of hits
+		//test if it updates the number of hits
 		assertEquals(6, ocean.getHitCount());
-		//test if it update the number of ships sunk
+		//test if it updates the number of ships sunk
 		assertEquals(2, ocean.getShipsSunk());
 
+		//Scenario 4
 		//test with a new cruiser
 		Cruiser cruiser = new Cruiser();
 		row = 9;
 		column = 9;
 		horizontal = false;
 		cruiser.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the cruiser
 		assertTrue(ocean.shootAt(9, 9));
 		assertFalse(cruiser.isSunk());
 		assertTrue(ocean.shootAt(8, 9));
 		assertTrue(ocean.shootAt(7, 9));
 		assertTrue(cruiser.isSunk());
-
-		//test if it update the number of shots fired
+		//test if it updates the number of shots fired
 		assertEquals(10, ocean.getShotsFired());
-		//test if it update the number of hits
+		//test if it updates the number of hits
 		assertEquals(9, ocean.getHitCount());
-		//test if it update the number of ships sunk
+		//test if it updates the number of ships sunk
 		assertEquals(3, ocean.getShipsSunk());
 	}
 
 	@Test
 	void testGetShotsFired() {
-		
+
+		//Scenario 1
 		//should be all false - no ships added yet
 		assertFalse(ocean.shootAt(0, 1));
 		assertFalse(ocean.shootAt(1, 0));
@@ -251,43 +257,44 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//Scenario 2
 		//test with a new battleship
 		Battleship battleship = new Battleship();
 		row = 5;
 		column = 5;
 		horizontal = false;
 		battleship.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the battleship
 		assertTrue(ocean.shootAt(5, 5));
 		assertFalse(battleship.isSunk());
 		assertTrue(ocean.shootAt(4, 5));
 		assertTrue(ocean.shootAt(3, 5));
 		assertTrue(ocean.shootAt(2, 5));
 		assertTrue(battleship.isSunk());
-
-		//test if it update the number of shots fired
+		//test if it updates the number of shots fired
 		assertEquals(10, ocean.getShotsFired());
 
+		//Scenario 3
 		//test with a new cruiser
 		Cruiser cruiser = new Cruiser();
 		row = 9;
 		column = 9;
 		horizontal = false;
 		cruiser.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the cruiser
 		assertTrue(ocean.shootAt(9, 9));
 		assertFalse(cruiser.isSunk());
 		assertTrue(ocean.shootAt(8, 9));
 		assertTrue(ocean.shootAt(7, 9));
 		assertTrue(cruiser.isSunk());
-
-		//test if it update the number of shots fired
+		//test if it updates the number of shots fired
 		assertEquals(13, ocean.getShotsFired());
 	}
 
 	@Test
 	void testGetHitCount() {
-		
+
+		//Scenario 1
 		Destroyer destroyer = new Destroyer();
 		int row = 1;
 		int column = 5;
@@ -300,43 +307,44 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//Scenario 2
 		//test with a new battleship
 		Battleship battleship = new Battleship();
 		row = 5;
 		column = 5;
 		horizontal = false;
 		battleship.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the battleship
 		assertTrue(ocean.shootAt(5, 5));
 		assertFalse(battleship.isSunk());
 		assertTrue(ocean.shootAt(4, 5));
 		assertTrue(ocean.shootAt(3, 5));
 		assertTrue(ocean.shootAt(2, 5));
 		assertTrue(battleship.isSunk());
-
-		//test if it update the number of hits
+		//test if it updates the number of hits
 		assertEquals(5, ocean.getHitCount());
 
+		//Scenario 3
 		//test with a new cruiser
 		Cruiser cruiser = new Cruiser();
 		row = 9;
 		column = 9;
 		horizontal = false;
 		cruiser.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the cruiser
 		assertTrue(ocean.shootAt(9, 9));
 		assertFalse(cruiser.isSunk());
 		assertTrue(ocean.shootAt(8, 9));
 		assertTrue(ocean.shootAt(7, 9));
 		assertTrue(cruiser.isSunk());
-
-		//test if it update the number of hits
+		//test if it updates the number of hits
 		assertEquals(8, ocean.getHitCount());
 	}
 	
 	@Test
 	void testGetShipsSunk() {
-		
+
+		//Scenario 1
 		Destroyer destroyer = new Destroyer();
 		int row = 1;
 		int column = 5;
@@ -350,44 +358,44 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//Scenario 2
 		//test with a new battleship
 		Battleship battleship = new Battleship();
 		row = 5;
 		column = 5;
 		horizontal = false;
 		battleship.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the battleship
 		assertTrue(ocean.shootAt(5, 5));
 		assertFalse(battleship.isSunk());
 		assertTrue(ocean.shootAt(4, 5));
 		assertTrue(ocean.shootAt(3, 5));
 		assertTrue(ocean.shootAt(2, 5));
 		assertTrue(battleship.isSunk());
-
-		//test if it update the number of ships sunk
+		//test if it updates the number of ships sunk
 		assertEquals(1, ocean.getShipsSunk());
 
+		//Scenario 3
 		//test with a new cruiser
 		Cruiser cruiser = new Cruiser();
 		row = 9;
 		column = 9;
 		horizontal = false;
-
 		cruiser.placeShipAt(row, column, horizontal, ocean);
-
+		//shoot at the cruiser
 		assertTrue(ocean.shootAt(9, 9));
 		assertFalse(cruiser.isSunk());
 		assertTrue(ocean.shootAt(8, 9));
 		assertTrue(ocean.shootAt(7, 9));
 		assertTrue(cruiser.isSunk());
-
-		//test if it update the number of ships sunk
+		//test if it updates the number of ships sunk
 		assertEquals(2, ocean.getShipsSunk());
 	}
 
 	@Test
 	void testGetShipArray() {
-		
+
+		//Scenario 1
 		Ship[][] shipArray = ocean.getShipArray();
 		assertEquals(OCEAN_SIZE, shipArray.length);
 		assertEquals(OCEAN_SIZE, shipArray[0].length);
@@ -396,23 +404,24 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//Scenario 2
 		//test with a new battleship
 		Battleship battleship = new Battleship();
 		int row = 5;
 		int column = 5;
 		boolean horizontal = false;
 		battleship.placeShipAt(row, column, horizontal, ocean);
-
+		//test the ship type
 		assertEquals("battleship", shipArray[5][5].getShipType());
 
-
+		//Scenario 3
 		//test with a new cruiser
 		Cruiser cruiser = new Cruiser();
 		row = 9;
 		column = 9;
 		horizontal = false;
 		cruiser.placeShipAt(row, column, horizontal, ocean);
-
+		//test the ship type
 		assertEquals("cruiser", shipArray[9][9].getShipType());
 	}
 }

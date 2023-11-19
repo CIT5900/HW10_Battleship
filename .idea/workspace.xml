@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5af9b77e-1147-4707-a7d5-3e5d3427d703" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/battleship/Ocean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/battleship/Ocean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/battleship/ShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/battleship/ShipTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="5af9b77e-1147-4707-a7d5-3e5d3427d703" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,7 +150,7 @@
       <workItem from="1700281736767" duration="71000" />
       <workItem from="1700281857935" duration="7952000" />
       <workItem from="1700338031245" duration="42371000" />
-      <workItem from="1700417035841" duration="2951000" />
+      <workItem from="1700417035841" duration="3784000" />
     </task>
     <servers />
   </component>

@@ -261,7 +261,7 @@ public abstract class Ship {
         }
 
         //create an index variable to store the index of the hit array
-        int index = 0;
+        int index;
 
         if (this.isHorizontal()){  //check if the ship is horizontal
 

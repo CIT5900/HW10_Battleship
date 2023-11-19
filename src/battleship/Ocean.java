@@ -235,10 +235,10 @@ public class Ocean {
         System.out.println("  0 1 2 3 4 5 6 7 8 9");
 
         //create a boolean variable to store the result
-        boolean isHit = false;
+        boolean isHit;
 
         //create an index variable
-        int index = 0;
+        int index;
 
         //iterate through the ships array and print each element
         for (int i = 0; i < 10; i++){
@@ -256,11 +256,12 @@ public class Ocean {
                     index = this.ships[i][j].getBowColumn() - j;
 
                     //check if the ship has been hit
-                    isHit = this.ships[i][j].getHit()[index];
                 } else {
                     index = this.ships[i][j].getBowRow() - i;
-                    isHit = this.ships[i][j].getHit()[index];
                 }
+
+                //check if the ship has been hit
+                isHit = this.ships[i][j].getHit()[index];
 
                 //check if the ship has been sunk
                 if (this.ships[i][j].isSunk()){
