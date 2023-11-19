@@ -237,14 +237,20 @@ public abstract class Ship {
             return false;
         }
 
+        int index = 0;
+
         if (this.isHorizontal()){
+
+            index = this.bowColumn - column;
             if (row == this.bowRow && column <= this.bowColumn && column >= this.bowColumn - this.length + 1){
-                this.hit[column - this.bowColumn + this.length - 1] = true;
+                this.hit[index] = true;
                 hit = true;
             }
         }else{
+
+            index = this.bowRow - row;
             if (column == this.bowColumn && row <= this.bowRow && row >= this.bowRow - this.length + 1){
-                this.hit[row - this.bowRow + this.length - 1] = true;
+                this.hit[index] = true;
                 hit = true;
             }
         }

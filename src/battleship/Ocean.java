@@ -203,6 +203,27 @@ public class Ocean {
 
     /**
      * Prints the ocean
+     * Prints the Ocean. To aid the user, row numbers should be displayed along the
+     * left edge of the array, and column numbers should be displayed along the top.
+     * Numbers should be 0 to 9, not 1 to 10.
+     * o The top left corner square should be 0, 0.
+     * o ‘x’: Use ‘x’ to indicate a location that you have fired upon and hit a (real) ship.
+     * (reference the description of toString in the Ship class)
+     * o ‘-’: Use ‘-’ to indicate a location that you have fired upon and found nothing
+     * there. (reference the description of toString in the EmptySea class)
+     * o ‘s’: Use ‘s’ to indicate a location containing a sunken ship. (reference the
+     * description of toString in the Ship class)
+     * o ‘.’: and use ‘.’ (a period) to indicate a location that you have never fired upon
+     * o This is the only method in the Ocean class that does any input/output, and it is
+     * never called from within the Ocean class, only from the BattleshipGame
+     * class.
+     *
+     * for each location in the 10 by 10 array (the “ocean”)
+     * ● if the location contains a ship that is sunk or if the location has been shot at, and was hit
+     * or nothing was found
+     * ○ print the ship itself -- this will call toString in the Ship class or any Ship
+     * subclass which has toString defined (i.e. EmptySea)
+     * ● otherwise print “.”
      */
 
     void print(){
@@ -210,13 +231,7 @@ public class Ocean {
         for (int i = 0; i < 10; i++){
             System.out.print(i + " ");
             for (int j = 0; j < 10; j++){
-                if (Objects.equals(this.ships[i][j].getShipType(), "empty")){
-                    System.out.print(". ");
-                }
-                else if (this.ships[i][j].isSunk()){
-                    System.out.print(this.ships[i][j].toString() + " ");
-                }
-                else if (this.ships[i][j].isHit(i, j)){
+                if (this.ships[i][j].isSunk() || this.ships[i][j].isHit(i, j)){
                     System.out.print(this.ships[i][j].toString() + " ");
                 }
                 else {

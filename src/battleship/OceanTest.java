@@ -138,7 +138,8 @@ class OceanTest {
 		assertTrue(ocean.shootAt(1, 5));
 		assertFalse(destroyer.isSunk());
 		assertTrue(ocean.shootAt(0, 5));
-		
+		assertTrue(destroyer.isSunk());
+
 		//TODO
 		//More tests
 	}
