@@ -32,7 +32,7 @@ class EmptySea extends Ship {
      */
 
     @Override
-    boolean shootAt(int row, int column){
+    public boolean shootAt(int row, int column){
         this.getHit()[0] = true;
         return false;
     }
@@ -42,7 +42,7 @@ class EmptySea extends Ship {
      */
 
     @Override
-    boolean isSunk(){
+    public boolean isSunk(){
         return false;
     }
 

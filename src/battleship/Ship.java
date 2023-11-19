@@ -148,7 +148,7 @@ public abstract class Ship {
      * Returns true if it is okay to put a ship of this length with its bow in this location; false otherwise.
      */
 
-    boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
+    public boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
 
         //create a boolean variable to store the result
         boolean okToPlace = true;
@@ -219,7 +219,7 @@ public abstract class Ship {
      * @param ocean the ocean
      */
 
-    void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
+    public void placeShipAt(int row, int column, boolean horizontal, Ocean ocean){
 
         //set the bowRow, bowColumn, and horizontal instance variables
         this.setBowRow(row);
@@ -248,7 +248,7 @@ public abstract class Ship {
      * @return true if a part of the ship occupies the given row and column and the ship has not been sunk
      */
 
-    boolean shootAt(int row, int column){
+    public boolean shootAt(int row, int column){
 
         //create a boolean variable to store the result
         boolean hit = false;
@@ -294,7 +294,7 @@ public abstract class Ship {
      * @return true if every part of the ship has been hit, false otherwise
      */
 
-    boolean isSunk() {
+    public boolean isSunk() {
 
         //create a boolean variable to store the result
         boolean sunk = true;

@@ -76,7 +76,7 @@ public class Ocean {
      * Place all ten ships randomly on the ocean
      */
 
-    void placeAllShipsRandomly(){
+    public void placeAllShipsRandomly(){
 
         //initialize the ships array
         this.initializeShipsArray();
@@ -100,7 +100,7 @@ public class Ocean {
      * @param shipType the ship type
      */
 
-    void placeOneKindOfShipRandomly (int num, String shipType){
+    private void placeOneKindOfShipRandomly (int num, String shipType){
 
         //create a new ship
         Ship ship = null;
@@ -149,7 +149,7 @@ public class Ocean {
      * @return true if the given location contains a ship, false if it does not
      */
 
-    boolean isOccupied(int row, int column){
+    public boolean isOccupied(int row, int column){
 
         //return the result
         return !(Objects.equals(this.ships[row][column].getShipType(), "empty"));
@@ -161,7 +161,7 @@ public class Ocean {
      * @return true if the given location contains a ”real” ship, still afloat; false if it does not
      */
 
-    boolean shootAt(int row, int column){
+    public boolean shootAt(int row, int column){
 
         //increase the number of shots fired
         this.shotsFired++;
@@ -188,7 +188,7 @@ public class Ocean {
     /**
      * @return the number of shots fired
      */
-    int getShotsFired(){
+    public int getShotsFired(){
         return this.shotsFired;
     }
 
@@ -196,7 +196,7 @@ public class Ocean {
      * @return the number of hits recorded
      */
 
-    int getHitCount(){
+    public int getHitCount(){
         return this.hitCount;
     }
 
@@ -204,7 +204,7 @@ public class Ocean {
      * @return the number of ships sunk
      */
 
-    int getShipsSunk(){
+    public int getShipsSunk(){
         return this.shipsSunk;
     }
 
@@ -212,7 +212,7 @@ public class Ocean {
      * @return true if all ships have been sunk, otherwise false
      */
 
-    boolean isGameOver(){
+    public boolean isGameOver(){
         //return the result
         return this.shipsSunk == 10;
     }
@@ -221,7 +221,7 @@ public class Ocean {
      * @return the 10x10 array of Ships
      */
 
-    Ship[][] getShipArray(){
+    public Ship[][] getShipArray(){
         return this.ships;
     }
 
@@ -229,7 +229,7 @@ public class Ocean {
      * Prints the ocean
      */
 
-    void print(){
+    public void print(){
 
         //print the first line
         System.out.println("  0 1 2 3 4 5 6 7 8 9");
@@ -281,7 +281,7 @@ public class Ocean {
      * Prints the ocean with ships
      */
 
-    void printWithShips() {
+    public void printWithShips() {
         System.out.println("  0 1 2 3 4 5 6 7 8 9");
         for (int i = 0; i < 10; i++){
             System.out.print(i + " ");
