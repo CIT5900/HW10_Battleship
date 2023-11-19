@@ -146,15 +146,15 @@ public class Ocean {
 
     boolean shootAt(int row, int column){
         this.shotsFired++;
-        if (this.isOccupied(row, column)){
-            if (this.ships[row][column].shootAt(row, column)){
-                this.hitCount++;
-                if (this.ships[row][column].isSunk()){
-                    this.shipsSunk++;
-                }
-                return true;
+
+        if (this.ships[row][column].shootAt(row, column)){
+            this.hitCount++;
+            if (this.ships[row][column].isSunk()){
+                this.shipsSunk++;
             }
+            return true;
         }
+
         return false;
     }
 
@@ -207,10 +207,26 @@ public class Ocean {
 
     void print(){
         System.out.println("  0 1 2 3 4 5 6 7 8 9");
+
+        boolean isHit = false;
+        int index = 0;
+
         for (int i = 0; i < 10; i++){
             System.out.print(i + " ");
             for (int j = 0; j < 10; j++){
+
+                if (this.ships[i][j].isHorizontal()) {
+                    index = this.ships[i][j].getBowColumn() - j;
+                    isHit = this.ships[i][j].getHit()[index];
+                } else {
+                    index = this.ships[i][j].getBowRow() - i;
+                    isHit = this.ships[i][j].getHit()[index];
+                }
+
                 if (this.ships[i][j].isSunk()){
+                    System.out.print(this.ships[i][j].toString() + " ");
+                }
+                else if (isHit){
                     System.out.print(this.ships[i][j].toString() + " ");
                 }
                 else {

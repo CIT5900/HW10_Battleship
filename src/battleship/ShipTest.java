@@ -296,6 +296,14 @@ class ShipTest {
 		boolean horizontal1 = true;
 		cruiser.setHorizontal(horizontal1);
 		assertTrue(cruiser.isHorizontal());
+
+		//create a new ship of type Destroyer
+		Ship destroyer = new Destroyer();
+		int row2 = 4;
+		int column2 = 7;
+		boolean horizontal2 = false;
+		destroyer.setHorizontal(horizontal2);
+		assertFalse(destroyer.isHorizontal());
 	}
 
 	@Test
@@ -461,6 +469,17 @@ class ShipTest {
 		assertTrue(destroyer.shootAt(3, 7));
 		boolean[] hitArray2 = {false, true};
 		assertArrayEquals(hitArray2, destroyer.getHit());
+
+		//test with empty sea
+		Ship emptySea = new EmptySea();
+		int row3 = 6;
+		int column3 = 7;
+		boolean horizontal3 = false;
+		emptySea.placeShipAt(row3, column3, horizontal3, ocean);
+
+		assertFalse(emptySea.shootAt(6, 7));
+		boolean[] hitArray3 = {false};
+		assertArrayEquals(hitArray3, emptySea.getHit());
 	}
 	
 	@Test

@@ -398,9 +398,8 @@ class OceanTest {
 		int column = 5;
 		boolean horizontal = false;
 		battleship.placeShipAt(row, column, horizontal, ocean);
-		Ship[][] shipArray1 = ocean.getShipArray();
 
-		assertEquals("battleship", shipArray1[5][5].getShipType());
+		assertEquals("battleship", shipArray[5][5].getShipType());
 
 
 		//test with a new cruiser
@@ -411,5 +410,25 @@ class OceanTest {
 		cruiser.placeShipAt(row, column, horizontal, ocean);
 
 		assertEquals("cruiser", shipArray[9][9].getShipType());
+	}
+
+	@Test
+	void testPrint() {
+
+		//test with empty ocean
+
+		ocean.shootAt(0, 0);
+		System.out.println(ocean.getShipArray()[0][0].getHit()[0]);
+		System.out.println(ocean.getShipArray()[0][0].toString());
+
+		int index = 0;
+		boolean isHit = false;
+
+		System.out.println(ocean.getShipArray()[0][0].isHorizontal());
+		index = ocean.getShipArray()[0][0].getBowRow();
+		isHit = ocean.getShipArray()[0][0].getHit()[index];
+		System.out.println(index);
+
+		ocean.print();
 	}
 }

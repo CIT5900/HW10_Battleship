@@ -48,9 +48,7 @@ public class BattleshipGame {
             int column = scanner.nextInt();
 
             //shoot at the location
-            if(ocean.shootAt(row, column)){
-
-            };
+            ocean.shootAt(row, column);
 
             //print the ocean
             ocean.print();
