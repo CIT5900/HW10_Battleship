@@ -76,6 +76,6 @@ public class BattleshipGame {
         System.out.println("The best possible score: 20");
 
         //print the final scores
-        System.out.println("Your final scores: " + (ocean.getShotsFired() + 1));
+        System.out.println("Your final scores: " + (ocean.getShotsFired()));
     }
 }

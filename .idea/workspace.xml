@@ -52,7 +52,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.OceanTest">
+  <component name="RunManager" selected="Application.BattleshipGame">
     <configuration name="BattleshipGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="battleship.BattleshipGame" />
       <module name="Battleship" />
@@ -130,9 +130,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BattleshipGame" />
         <item itemvalue="JUnit.OceanTest" />
         <item itemvalue="JUnit.ShipTest" />
-        <item itemvalue="Application.BattleshipGame" />
         <item itemvalue="JUnit.OceanTest.testPrint" />
         <item itemvalue="JUnit.ShipTest.testShootAt" />
       </list>
