@@ -282,10 +282,20 @@ public class Ocean {
      */
 
     public void printWithShips() {
+
+        //print the first line
         System.out.println("  0 1 2 3 4 5 6 7 8 9");
+
+        //iterate through the ships array and print each element
         for (int i = 0; i < 10; i++){
+
+            //print the row number
             System.out.print(i + " ");
+
+            //iterate through the row
             for (int j = 0; j < 10; j++){
+
+                //check the type of the ship
                 if (Objects.equals(this.ships[i][j].getShipType(), "battleship")){
                     System.out.print("b ");
                 }
