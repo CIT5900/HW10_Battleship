@@ -56,11 +56,14 @@ public class Ocean {
      */
 
     private void initializeShipsArray(){
-        //initialize the ships array
+        //iterate through the ships array and initialize each element to an empty sea
         for (int i = 0; i < 10; i++){
             for (int j = 0 ; j < 10; j++){
+
+                //initialize each element to an empty sea
                 this.ships[i][j] = new EmptySea();
 
+                //set the bowRow and bowColumn of each element
                 this.ships[i][j].setBowRow(i);
                 this.ships[i][j].setBowColumn(j);
             }
@@ -102,27 +105,39 @@ public class Ocean {
         //create a new ship
         Ship ship = null;
 
+        //loop until all the ships are placed
         while (num > 0){
 
+            //create a new battleship
             if (Objects.equals(shipType, "battleship")){
                 ship = new Battleship();
             }
+
+            //create a new cruiser
             else if (Objects.equals(shipType, "cruiser")){
                 ship = new Cruiser();
             }
+
+            //create a new destroyer
             else if (Objects.equals(shipType, "destroyer")){
                 ship = new Destroyer();
             }
+
+            //create a new submarine
             else if (Objects.equals(shipType, "submarine")){
                 ship = new Submarine();
             }
 
+            //generate a random row, column and orientation
             int row = (int) (Math.random() * 10);
             int column = (int) (Math.random() * 10);
             boolean horizontal = (Math.random() >= 0.5);
 
+            //place the ship at the given location
             if (ship != null && ship.okToPlaceShipAt(row, column, horizontal, this)){
                 ship.placeShipAt(row, column, horizontal, this);
+
+                //decrease the number of ships
                 num--;
             }
         }
@@ -135,6 +150,8 @@ public class Ocean {
      */
 
     boolean isOccupied(int row, int column){
+
+        //return the result
         return !(Objects.equals(this.ships[row][column].getShipType(), "empty"));
     }
 
@@ -145,16 +162,26 @@ public class Ocean {
      */
 
     boolean shootAt(int row, int column){
+
+        //increase the number of shots fired
         this.shotsFired++;
 
+        //check if the location is occupied by a ship
         if (this.ships[row][column].shootAt(row, column)){
+
+            //increase the number of hits recorded
             this.hitCount++;
+
+            //check if the ship has been sunk
             if (this.ships[row][column].isSunk()){
                 this.shipsSunk++;
             }
+
+            //return true
             return true;
         }
 
+        //return false
         return false;
     }
 
@@ -186,11 +213,8 @@ public class Ocean {
      */
 
     boolean isGameOver(){
-        boolean GameOver = false;
-        if (this.shipsSunk == 10){
-            GameOver = true;
-        }
-        return GameOver;
+        //return the result
+        return this.shipsSunk == 10;
     }
 
     /**
@@ -206,30 +230,46 @@ public class Ocean {
      */
 
     void print(){
+
+        //print the first line
         System.out.println("  0 1 2 3 4 5 6 7 8 9");
 
+        //create a boolean variable to store the result
         boolean isHit = false;
+
+        //create an index variable
         int index = 0;
 
+        //iterate through the ships array and print each element
         for (int i = 0; i < 10; i++){
+
+            //print the row number
             System.out.print(i + " ");
+
+            //iterate through the row
             for (int j = 0; j < 10; j++){
 
+                //check if the ship is horizontal
                 if (this.ships[i][j].isHorizontal()) {
+
+                    //calculate the index of the hit array
                     index = this.ships[i][j].getBowColumn() - j;
+
+                    //check if the ship has been hit
                     isHit = this.ships[i][j].getHit()[index];
                 } else {
                     index = this.ships[i][j].getBowRow() - i;
                     isHit = this.ships[i][j].getHit()[index];
                 }
 
+                //check if the ship has been sunk
                 if (this.ships[i][j].isSunk()){
                     System.out.print(this.ships[i][j].toString() + " ");
                 }
-                else if (isHit){
+                else if (isHit){  //check if the ship has been hit
                     System.out.print(this.ships[i][j].toString() + " ");
                 }
-                else {
+                else {  //print a dot
                     System.out.print(". ");
                 }
             }
