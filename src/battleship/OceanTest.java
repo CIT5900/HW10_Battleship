@@ -122,6 +122,32 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//test with empty sea
+		assertFalse(ocean.isOccupied(0, 1));
+		assertFalse(ocean.isOccupied(1, 0));
+		assertFalse(ocean.isOccupied(3, 3));
+
+		//test with a new battleship
+		Battleship battleship = new Battleship();
+		row = 5;
+		column = 5;
+		horizontal = false;
+		battleship.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.isOccupied(5, 5));
+		assertFalse(ocean.isOccupied(5, 6));
+		assertFalse(ocean.isOccupied(5, 7));
+
+		//test with a new cruiser
+		Cruiser cruiser = new Cruiser();
+		row = 9;
+		column = 9;
+		horizontal = false;
+		cruiser.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.isOccupied(9, 9));
+		assertFalse(ocean.isOccupied(9, 8));
+		assertFalse(ocean.isOccupied(9, 7));
 	}
 
 	@Test
@@ -142,6 +168,53 @@ class OceanTest {
 
 		//TODO
 		//More tests
+		//test if it update the number of shots fired
+		assertEquals(3, ocean.getShotsFired());
+		//test if it update the number of hits
+		assertEquals(2, ocean.getHitCount());
+		//test if it update the number of ships sunk
+		assertEquals(1, ocean.getShipsSunk());
+
+		//test with a new battleship
+		Battleship battleship = new Battleship();
+		row = 5;
+		column = 5;
+		horizontal = false;
+		battleship.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(5, 5));
+		assertFalse(battleship.isSunk());
+		assertTrue(ocean.shootAt(4, 5));
+		assertTrue(ocean.shootAt(3, 5));
+		assertTrue(ocean.shootAt(2, 5));
+		assertTrue(battleship.isSunk());
+
+		//test if it update the number of shots fired
+		assertEquals(7, ocean.getShotsFired());
+		//test if it update the number of hits
+		assertEquals(6, ocean.getHitCount());
+		//test if it update the number of ships sunk
+		assertEquals(2, ocean.getShipsSunk());
+
+		//test with a new cruiser
+		Cruiser cruiser = new Cruiser();
+		row = 9;
+		column = 9;
+		horizontal = false;
+		cruiser.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(9, 9));
+		assertFalse(cruiser.isSunk());
+		assertTrue(ocean.shootAt(8, 9));
+		assertTrue(ocean.shootAt(7, 9));
+		assertTrue(cruiser.isSunk());
+
+		//test if it update the number of shots fired
+		assertEquals(10, ocean.getShotsFired());
+		//test if it update the number of hits
+		assertEquals(9, ocean.getHitCount());
+		//test if it update the number of ships sunk
+		assertEquals(3, ocean.getShipsSunk());
 	}
 
 	@Test
@@ -174,6 +247,38 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//test with a new battleship
+		Battleship battleship = new Battleship();
+		row = 5;
+		column = 5;
+		horizontal = false;
+		battleship.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(5, 5));
+		assertFalse(battleship.isSunk());
+		assertTrue(ocean.shootAt(4, 5));
+		assertTrue(ocean.shootAt(3, 5));
+		assertTrue(ocean.shootAt(2, 5));
+		assertTrue(battleship.isSunk());
+
+		//test if it update the number of shots fired
+		assertEquals(10, ocean.getShotsFired());
+
+		//test with a new cruiser
+		Cruiser cruiser = new Cruiser();
+		row = 9;
+		column = 9;
+		horizontal = false;
+		cruiser.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(9, 9));
+		assertFalse(cruiser.isSunk());
+		assertTrue(ocean.shootAt(8, 9));
+		assertTrue(ocean.shootAt(7, 9));
+		assertTrue(cruiser.isSunk());
+
+		//test if it update the number of shots fired
+		assertEquals(13, ocean.getShotsFired());
 	}
 
 	@Test
@@ -191,6 +296,38 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//test with a new battleship
+		Battleship battleship = new Battleship();
+		row = 5;
+		column = 5;
+		horizontal = false;
+		battleship.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(5, 5));
+		assertFalse(battleship.isSunk());
+		assertTrue(ocean.shootAt(4, 5));
+		assertTrue(ocean.shootAt(3, 5));
+		assertTrue(ocean.shootAt(2, 5));
+		assertTrue(battleship.isSunk());
+
+		//test if it update the number of hits
+		assertEquals(5, ocean.getHitCount());
+
+		//test with a new cruiser
+		Cruiser cruiser = new Cruiser();
+		row = 9;
+		column = 9;
+		horizontal = false;
+		cruiser.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(9, 9));
+		assertFalse(cruiser.isSunk());
+		assertTrue(ocean.shootAt(8, 9));
+		assertTrue(ocean.shootAt(7, 9));
+		assertTrue(cruiser.isSunk());
+
+		//test if it update the number of hits
+		assertEquals(8, ocean.getHitCount());
 	}
 	
 	@Test
@@ -209,6 +346,39 @@ class OceanTest {
 		
 		//TODO
 		//More tests
+		//test with a new battleship
+		Battleship battleship = new Battleship();
+		row = 5;
+		column = 5;
+		horizontal = false;
+		battleship.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(5, 5));
+		assertFalse(battleship.isSunk());
+		assertTrue(ocean.shootAt(4, 5));
+		assertTrue(ocean.shootAt(3, 5));
+		assertTrue(ocean.shootAt(2, 5));
+		assertTrue(battleship.isSunk());
+
+		//test if it update the number of ships sunk
+		assertEquals(1, ocean.getShipsSunk());
+
+		//test with a new cruiser
+		Cruiser cruiser = new Cruiser();
+		row = 9;
+		column = 9;
+		horizontal = false;
+
+		cruiser.placeShipAt(row, column, horizontal, ocean);
+
+		assertTrue(ocean.shootAt(9, 9));
+		assertFalse(cruiser.isSunk());
+		assertTrue(ocean.shootAt(8, 9));
+		assertTrue(ocean.shootAt(7, 9));
+		assertTrue(cruiser.isSunk());
+
+		//test if it update the number of ships sunk
+		assertEquals(2, ocean.getShipsSunk());
 	}
 
 	@Test
@@ -222,6 +392,24 @@ class OceanTest {
 		
 		//TODO
 		//More tests
-	}
+		//test with a new battleship
+		Battleship battleship = new Battleship();
+		int row = 5;
+		int column = 5;
+		boolean horizontal = false;
+		battleship.placeShipAt(row, column, horizontal, ocean);
+		Ship[][] shipArray1 = ocean.getShipArray();
 
+		assertEquals("battleship", shipArray1[5][5].getShipType());
+
+
+		//test with a new cruiser
+		Cruiser cruiser = new Cruiser();
+		row = 9;
+		column = 9;
+		horizontal = false;
+		cruiser.placeShipAt(row, column, horizontal, ocean);
+
+		assertEquals("cruiser", shipArray[9][9].getShipType());
+	}
 }

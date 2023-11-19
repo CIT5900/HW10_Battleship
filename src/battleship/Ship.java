@@ -285,17 +285,4 @@ public abstract class Ship {
             return "x";
         }
     }
-
-    public boolean isHit(int row, int column) {
-        if (this.isHorizontal()){
-            if (row == this.bowRow && column <= this.bowColumn && column >= this.bowColumn - this.length + 1){
-                return this.hit[column - this.bowColumn + this.length - 1];
-            }
-        }else{
-            if (column == this.bowColumn && row <= this.bowRow && row >= this.bowRow - this.length + 1){
-                return this.hit[row - this.bowRow + this.length - 1];
-            }
-        }
-        return false;
-    }
 }
