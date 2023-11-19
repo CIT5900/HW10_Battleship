@@ -186,13 +186,9 @@ public class Ocean {
      */
 
     boolean isGameOver(){
-        boolean GameOver = true;
-        for (int i = 0; i<9;i++){
-            for (int j =0 ; j< 9; j++){
-                if (!(this.ships[i][j].isSunk()) && !(Objects.equals(this.ships[i][j].getShipType(), "-"))){
-                    GameOver = false;
-                }
-            }
+        boolean GameOver = false;
+        if (this.shipsSunk == 10){
+            GameOver = true;
         }
         return GameOver;
     }
@@ -214,9 +210,20 @@ public class Ocean {
         for (int i = 0; i < 10; i++){
             System.out.print(i + " ");
             for (int j = 0; j < 10; j++){
-                System.out.print(this.ships[i][j].toString() + " ");
+                if (Objects.equals(this.ships[i][j].getShipType(), "empty")){
+                    System.out.print(". ");
+                }
+                else if (this.ships[i][j].isSunk()){
+                    System.out.print(this.ships[i][j].toString() + " ");
+                }
+                else if (this.ships[i][j].isHit(i, j)){
+                    System.out.print(this.ships[i][j].toString() + " ");
+                }
+                else {
+                    System.out.print(". ");
+                }
             }
-            System.out.println("\n");
+            System.out.println();
         }
     }
 
